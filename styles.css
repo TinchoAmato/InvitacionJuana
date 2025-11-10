@@ -1,0 +1,188 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: rgb(255, 231, 240); /* 🎨 rosa más claro y suave */
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+
+.app {
+  width: 100%;
+  max-width: 600px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+  align-items: center;
+}
+
+.box {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8%;
+  color: #e0b84f;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+
+  /* Dimensiones dinámicas */
+  min-height: min(70vh, 600px);
+  width: min(80vw, 480px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  /* Fondo semitransparente encima */
+  background-color: rgba(255, 255, 255, 0.1);
+
+  /* Tipografía manuscrita */
+  font-family: 'Patrick Hand', 'Caveat', 'Comic Neue', cursive;
+}
+
+/* 🎨 Pseudo-elemento con imagen y blur */
+.box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('images/Fondo2.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  filter: blur(0px) brightness(0.85);
+  transform: scale(1.1); /* evita bordes duros del blur */
+}
+
+.first-box{
+  min-height:min(80vh,800px);
+}
+
+h1 {
+  font-family: 'Pinyon Script', cursive;
+  font-size: 5rem;
+  font-weight: 400;
+  color: #222222;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.25);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-family: 'Playwrite ES', cursive;
+  font-size: .8rem;
+  color: #fbd36d;
+  letter-spacing: 3px;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+p {
+  font-family: 'Merriweather', serif;
+  font-size: 1.2rem;
+  color: rgb(188, 65, 106);
+  line-height: 1.6;
+  letter-spacing: 0.2px;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+
+@media (min-width: 600px) {
+  .box {
+    width: 80%;
+    min-height: 600px;
+  }
+  .first-box{
+    min-height: 800px;
+  }
+}
+
+footer {
+  width: 100%;
+  height: 125px;
+  flex-shrink: 0;
+}
+
+.play-button {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgb(188, 65, 106);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-top: 50px;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 25px rgba(188, 65, 106, 0.6);
+}
+
+.play-button:hover {
+  transform: scale(1.05);
+}
+
+/* Animación con pausa */
+.playing {
+  animation: heartbeat 3s infinite;
+}
+
+@keyframes heartbeat {
+  0%, 10% {
+    transform: scale(1);
+    box-shadow: 0 0 25px rgba(188, 65, 106, 0.6);
+  }
+  15% {
+    transform: scale(1.1);
+    box-shadow: 0 0 45px rgba(188, 65, 106, 0.9);
+  }
+  25% {
+    transform: scale(1);
+    box-shadow: 0 0 25px rgba(188, 65, 106, 0.6);
+  }
+  30% {
+    transform: scale(1.1);
+    box-shadow: 0 0 55px rgba(188, 65, 106, 1);
+  }
+  40%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 25px rgba(188, 65, 106, 0.6);
+  }
+}
+
+.spotify-link {
+  display: block; /* se comporta como un párrafo */
+  margin-top: 20px;
+  color: #fbd36d; /* dorado */
+  font-size: 1rem;
+  font-family: 'Merriweather', serif; /* misma fuente que los <p> */
+  letter-spacing: 0.2px;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
+  text-decoration: none; /* elimina subrayado */
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Efecto al pasar el mouse, sin parecer enlace azul */
+.spotify-link:hover {
+  color: #ffe98a;
+  text-shadow: 0 0 10px rgba(251, 211, 109, 0.8);
+}
