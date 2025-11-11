@@ -2,7 +2,7 @@ const playButton = document.getElementById("playButton");
 const playIcon = document.getElementById("playIcon");
 
 // 🎶 Tu canción (podés reemplazarla por una local en /audio/ si querés)
-const audio = new Audio("Audio/Coldplay.m4a");
+const audio = new Audio("Audio/Coldplay.mp3");
 
 let isPlaying = false;
 
