@@ -1,3 +1,4 @@
+/* ─── RESETEO GLOBAL ─────────────────────────────── */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -6,20 +7,25 @@
 
 html, body {
   height: 100%;
-}
-
-body {
-  background-color: #dcb2ad; /* 🎨 rosa más claro y suave */
+  color-scheme: light only;
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 20px;
+  padding: 2vh 2vw;
   min-height: 100vh;
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-color: color(srgb 0.8627 0.6980 0.6784);
+  z-index: -2;
+}
 
+/* ─── CONTENEDORES ─────────────────────────────── */
 .app {
   width: 100%;
   max-width: 600px;
@@ -28,8 +34,10 @@ body {
 .container {
   display: flex;
   flex-direction: column;
-  gap: 120px;
   align-items: center;
+  justify-content: flex-start;
+  gap: clamp(80px, 10vh, 120px);
+  padding-top: 20px;
 }
 
 .box {
@@ -38,48 +46,61 @@ body {
   border-radius: 12%;
   color: #e0b84f;
   text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
-  padding: 30px;
+  padding: clamp(20px, 4vw, 30px);
   text-align: center;
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 
-  /* Dimensiones dinámicas */
-  min-height: min(70vh, 350px);
-  width: min(80vw, 480px);
+  width: min(85vw, 480px);
+  min-height: clamp(320px, 65vh, 520px);
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  /* Fondo semitransparente encima */
   background-color: rgba(255, 255, 255, 0.1);
-
-  /* Tipografía manuscrita */
   font-family: 'Patrick Hand', 'Caveat', 'Comic Neue', cursive;
 }
 
-/* 🎨 Pseudo-elemento con imagen y blur */
-.box::before {
-  content: "";
+/* 🎨 NUEVO: fondo interno que reemplaza el ::before */
+.box .bg {
   position: absolute;
   inset: 0;
   background-image: url('./Images/Fondo4.jfif');
   background-size: cover;
-  background-position: center;
-  z-index: -1;
+  background-position: top center;
+  background-repeat: no-repeat;
   filter: brightness(0.85);
-   /* evita bordes duros del blur */
+  z-index: -1;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
 }
 
-.first-box{
-  min-height:min(80vh,800px);
+/* ✅ Truco: forzar pintado inicial del GPU */
+.box:first-child .bg {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* 🔹 Ajuste para pantallas más pequeñas */
+@media (max-width: 480px) {
+  .box {
+    border-radius: 8%;
+    width: 85vw;
+    min-height: 350px;
+  }
+}
+.first-box {
+  min-height: min(80vh, 800px);
   border-radius: 5%;
 }
 
+/* ─── TIPOGRAFÍA ESCALABLE ─────────────────────────────── */
 h1 {
   font-family: 'Pinyon Script', cursive;
-  font-size: 6rem;
+  font-size: clamp(4rem, 7vw, 6rem);
   font-weight: 400;
-  color: #222222;
+  color: #222;
   text-shadow: 1px 1px 4px rgba(0,0,0,0.25);
   text-align: center;
   margin-bottom: 1rem;
@@ -88,25 +109,22 @@ h1 {
 h2 {
   position: relative;
   font-family: 'Alex Brush', cursive;
-  font-size: 2rem;
-  color: rgb(34, 34, 34, 0.8);
+  font-size: clamp(2rem, 4vw, 2.2rem);
+  color: rgba(34, 34, 34, 0.8);
   text-align: center;
   margin-bottom: 2.5rem;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
   background-color: transparent;
 }
 
-
 .titulo {
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 3vw, 1.25rem);
 }
-
-
 
 p {
   font-family: 'Playwrite ES', cursive;
   font-weight: 600;
-  font-size: .6rem;
+  font-size: clamp(0.6rem, 1.5vw, 0.7rem);
   color: rgb(136, 87, 80);
   line-height: 1.6;
   letter-spacing: 0.2px;
@@ -114,126 +132,86 @@ p {
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
 }
 
-
-@media (min-width: 600px) {
-  .box {
-    width: 80%;
-    min-height: 500px;
-  }
-  .first-box{
-    min-height: 800px;
-  }
-}
-
-footer {
-  width: 100%;
-  height: 125px;
-  flex-shrink: 0;
-}
-
+/* ─── PLAY BUTTON ─────────────────────────────── */
 .play-button {
-  width: 110px;
-  height: 110px;
+  width: clamp(80px, 15vw, 110px);
+  height: clamp(80px, 15vw, 110px);
   border-radius: 50%;
   border: none;
-  background-color: rgb(136, 87, 80);;
+  background-color: rgb(136, 87, 80);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   margin-top: 50px;
   transition: transform 0.2s ease, box-shadow 0.3s ease;
-  box-shadow: 0 0 25px rgba(136, 87, 80,0.6);
+  box-shadow: 0 0 25px rgba(136, 87, 80, 0.6);
 }
 
 .play-button:hover {
   transform: scale(1.05);
 }
 
-/* Animación con pausa */
 .playing {
   animation: heartbeat 3s infinite;
 }
 
 @keyframes heartbeat {
-  0%, 10% {
-    transform: scale(1);
-    box-shadow: 0 0 25px rgba(136, 87, 80,0.6);
-  }
-  15% {
-    transform: scale(1.1);
-    box-shadow: 0 0 45px rgba(136, 87, 80,0.9);
-  }
-  25% {
-    transform: scale(1);
-    box-shadow: 0 0 25px rgba(136, 87, 80,0.6);
-  }
-  30% {
-    transform: scale(1.1);
-    box-shadow: 0 0 55px rgba(136, 87, 80,1);
-  }
-  40%, 100% {
-    transform: scale(1);
-    box-shadow: 0 0 25px rgba(136, 87, 80,0.6);
-  }
+  0%, 10% { transform: scale(1); box-shadow: 0 0 25px rgba(136, 87, 80,0.6); }
+  15% { transform: scale(1.1); box-shadow: 0 0 45px rgba(136, 87, 80,0.9); }
+  25% { transform: scale(1); box-shadow: 0 0 25px rgba(136, 87, 80,0.6); }
+  30% { transform: scale(1.1); box-shadow: 0 0 55px rgba(136, 87, 80,1); }
+  40%, 100% { transform: scale(1); box-shadow: 0 0 25px rgba(136, 87, 80,0.6); }
 }
 
+/* ─── SPOTIFY LINK ─────────────────────────────── */
 .spotify-link {
   font-weight: 600;
-  display: block; /* se comporta como un párrafo */
+  display: block;
   margin-top: 20px;
   color: rgb(136, 87, 80);
-  font-size: .45rem;
+  font-size: clamp(0.45rem, 1vw, 0.7rem);
   font-family: 'Playwrite ES', cursive;
   letter-spacing: 0.2px;
   text-align: center;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
-  text-decoration: none; /* elimina subrayado */
+  text-decoration: none;
   transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
-/* Efecto al pasar el mouse, sin parecer enlace azul */
 .spotify-link:hover {
   color: rgb(146, 87, 80);
   text-shadow: 0 0 10px rgba(136, 87, 80,0.8);
 }
 
+/* ─── DECORACIÓN H2 ─────────────────────────────── */
 .titulo::before {
   position: absolute;
   content: "";
-  
-  /* 📐 Dimensiones Fijas para la Imagen (Ajusta estos valores) */ 
-  width: 10rem;
-  height: 5rem;
-  
-  /* 🎯 Centrado Absoluto CLAVE: */
-  top: 50%; 
+  width: clamp(6rem, 15vw, 10rem);
+  height: clamp(3rem, 7vw, 5rem);
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* Mueve el elemento 50% de su propio tamaño hacia arriba e izquierda */
-  
-  /* Fondo (Usamos '100% 100%' para forzar la imagen a llenar el nuevo width/height) */
+  transform: translate(-50%, -50%);
   background-image: url(Images/Num15.png);
   background-repeat: no-repeat;
-  background-size: auto 100%; /* La imagen llenará el nuevo tamaño de 100px x 100px */
-  background-position: center; 
-  
-  /* Mover detrás del texto */
-  z-index: -1; 
-  
-  /* Otros ajustes */
+  background-size: auto 100%;
+  background-position: center;
+  z-index: -1;
   pointer-events: none;
-  filter: opacity(.3);
+  opacity: 0.3;
 }
 
+/* ─── COUNTDOWN ─────────────────────────────── */
 #countdown-container {
   text-align: center;
-  font-family: 'Merriweather', serif;
+  font-family: 'Playwrite ES', cursive;
   margin-top: 40px;
   color: rgb(136, 87, 80);
 }
 
 #countdown {
-  font-size: 1rem;
+  font-size: clamp(0.8rem, 2vw, 1rem);
   font-weight: bold;
   letter-spacing: 2px;
   background: rgba(255, 255, 255, 0.3);
@@ -246,10 +224,11 @@ footer {
 
 #countdown span {
   color: rgb(136, 87, 80);
-  font-size: 1.1rem;
-  font-family: cursive;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  font-family: 'Playwrite ES', cursive;
 }
 
+/* ─── MAPA ─────────────────────────────── */
 .map-container {
   text-align: center;
   width: 100%;
@@ -262,14 +241,15 @@ footer {
   backdrop-filter: blur(6px);
   padding-bottom: 10px;
 }
-/* 🎀 Estilo base para todos los botones */
+
+/* ─── BOTONES ─────────────────────────────── */
 .action-button {
   display: inline-block;
   background-color: rgb(136, 87, 80);
   color: white;
   font-family: 'Playwrite ES', cursive;
   font-weight: 600;
-  font-size: 0.6rem;
+  font-size: clamp(0.55rem, 1.3vw, 0.8rem);
   letter-spacing: 0.5px;
   padding: 14px 28px;
   border-radius: 50px;
@@ -282,20 +262,13 @@ footer {
   border: none;
 }
 
-/* 💫 Efecto hover común */
 .action-button:hover {
   background-color: rgb(156, 97, 90);
   transform: scale(1.05);
   box-shadow: 0 0 35px rgba(136, 87, 80, 0.8);
 }
 
-/* 🔹 Variante más chica (si la necesitás para botones secundarios) */
-.action-button.small {
-  font-size: 0.6rem;
-  padding: 10px 20px;
-  letter-spacing: 1px;
-}
-
+/* ─── POPUP ─────────────────────────────── */
 .popup {
   position: fixed;
   inset: 0;
@@ -317,4 +290,11 @@ footer {
   border-radius: 20px;
   text-align: center;
   box-shadow: 0 0 25px rgba(136, 87, 80, 0.4);
+}
+
+/* ─── FOOTER ─────────────────────────────── */
+footer {
+  width: 100%;
+  height: 10vh;
+  flex-shrink: 0;
 }
