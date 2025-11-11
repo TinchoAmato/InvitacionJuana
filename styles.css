@@ -205,7 +205,7 @@ p {
 /* ─── COUNTDOWN ─────────────────────────────── */
 #countdown-container {
   text-align: center;
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-family: 'stack sans text', sans-serif;
   margin-top: 40px;
   color: rgb(136, 87, 80);
 }
@@ -225,7 +225,7 @@ p {
 #countdown span {
   color: rgb(136, 87, 80);
   font-size: clamp(0.9rem, 2vw, 1.1rem);
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-family: 'stack sans text', sans-serif;
 }
 
 /* ─── MAPA ─────────────────────────────── */
