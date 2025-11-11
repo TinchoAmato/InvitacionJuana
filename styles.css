@@ -62,21 +62,22 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url('./Images/Fondo2.jpg');
+  background-image: url('./Images/Fondo4.jfif');
   background-size: cover;
   background-position: center;
   z-index: -1;
-  filter: blur(0px) brightness(0.85);
-  transform: scale(1.1); /* evita bordes duros del blur */
+  filter: brightness(0.85);
+   /* evita bordes duros del blur */
 }
 
 .first-box{
   min-height:min(80vh,800px);
+  border-radius: 5%;
 }
 
 h1 {
   font-family: 'Pinyon Script', cursive;
-  font-size: 5rem;
+  font-size: 6rem;
   font-weight: 400;
   color: #222222;
   text-shadow: 1px 1px 4px rgba(0,0,0,0.25);
@@ -86,8 +87,8 @@ h1 {
 
 h2 {
   font-family: 'Playwrite ES', cursive;
-  font-size: .8rem;
-  color: #fbd36d;
+  font-size: 1rem;
+  color: rgb(136, 87, 80);
   letter-spacing: 3px;
   text-align: center;
   margin-bottom: 0.5rem;
@@ -95,9 +96,9 @@ h2 {
 }
 
 p {
-  font-family: 'Merriweather', serif;
-  font-size: 1rem;
-  color: rgb(188, 65, 106);
+  font-family: 'Playwrite ES', cursive;
+  font-size: .7rem;
+  color: rgb(136, 87, 80);
   line-height: 1.6;
   letter-spacing: 0.2px;
   text-align: center;
@@ -122,18 +123,18 @@ footer {
 }
 
 .play-button {
-  width: 100px;
-  height: 100px;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
   border: none;
-  background-color: rgb(188, 65, 106);
+  background-color: rgb(136, 87, 80);;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   margin-top: 50px;
   transition: transform 0.2s ease, box-shadow 0.3s ease;
-  box-shadow: 0 0 25px rgba(188, 65, 106, 0.6);
+  box-shadow: 0 0 25px rgba(136, 87, 80,0.6);
 }
 
 .play-button:hover {
@@ -148,30 +149,30 @@ footer {
 @keyframes heartbeat {
   0%, 10% {
     transform: scale(1);
-    box-shadow: 0 0 25px rgba(188, 65, 106, 0.6);
+    box-shadow: 0 0 25px rgba(136, 87, 80,0.6);
   }
   15% {
     transform: scale(1.1);
-    box-shadow: 0 0 45px rgba(188, 65, 106, 0.9);
+    box-shadow: 0 0 45px rgba(136, 87, 80,0.9);
   }
   25% {
     transform: scale(1);
-    box-shadow: 0 0 25px rgba(188, 65, 106, 0.6);
+    box-shadow: 0 0 25px rgba(136, 87, 80,0.6);
   }
   30% {
     transform: scale(1.1);
-    box-shadow: 0 0 55px rgba(188, 65, 106, 1);
+    box-shadow: 0 0 55px rgba(136, 87, 80,1);
   }
   40%, 100% {
     transform: scale(1);
-    box-shadow: 0 0 25px rgba(188, 65, 106, 0.6);
+    box-shadow: 0 0 25px rgba(136, 87, 80,0.6);
   }
 }
 
 .spotify-link {
   display: block; /* se comporta como un párrafo */
   margin-top: 20px;
-  color: #fbd36d; /* dorado */
+  color: rgb(136, 87, 80);
   font-size: 1rem;
   font-family: 'Merriweather', serif; /* misma fuente que los <p> */
   letter-spacing: 0.2px;
@@ -183,6 +184,6 @@ footer {
 
 /* Efecto al pasar el mouse, sin parecer enlace azul */
 .spotify-link:hover {
-  color: #ffe98a;
-  text-shadow: 0 0 10px rgba(251, 211, 109, 0.8);
+  color: rgb(146, 87, 80);
+  text-shadow: 0 0 10px rgba(136, 87, 80,0.8);
 }
