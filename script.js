@@ -50,3 +50,14 @@ const countdownInterval = setInterval(() => {
   document.getElementById("seconds").textContent = seconds.toString().padStart(2, "0");
 }, 1000);
 
+const popup = document.getElementById('popup');
+const openPopup = document.getElementById('openPopup');
+const closePopup = document.getElementById('closePopup');
+
+openPopup.addEventListener('click', () => {
+  popup.classList.remove('hidden');
+});
+
+closePopup.addEventListener('click', () => {
+  popup.classList.add('hidden');
+});

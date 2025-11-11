@@ -262,8 +262,8 @@ footer {
   backdrop-filter: blur(6px);
   padding-bottom: 10px;
 }
-
-.whatsapp-button {
+/* 🎀 Estilo base para todos los botones */
+.action-button {
   display: inline-block;
   background-color: rgb(136, 87, 80);
   color: white;
@@ -278,16 +278,43 @@ footer {
   box-shadow: 0 0 25px rgba(136, 87, 80, 0.6);
   transition: transform 0.2s ease, box-shadow 0.3s ease, background-color 0.3s ease;
   margin-top: 25px;
+  cursor: pointer;
+  border: none;
 }
 
-.whatsapp-button:hover {
+/* 💫 Efecto hover común */
+.action-button:hover {
   background-color: rgb(156, 97, 90);
   transform: scale(1.05);
   box-shadow: 0 0 35px rgba(136, 87, 80, 0.8);
 }
 
-.whatsapp-button.small {
+/* 🔹 Variante más chica (si la necesitás para botones secundarios) */
+.action-button.small {
   font-size: 0.6rem;
   padding: 10px 20px;
   letter-spacing: 1px;
+}
+
+.popup {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  backdrop-filter: blur(4px);
+}
+
+.popup.hidden {
+  display: none;
+}
+
+.popup-content {
+  background: white;
+  color: rgb(136, 87, 80);
+  padding: 30px 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(136, 87, 80, 0.4);
 }
