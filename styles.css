@@ -188,8 +188,8 @@ p {
 .titulo::before {
   position: absolute;
   content: "";
-  width: clamp(6rem, 15vw, 10rem);
-  height: clamp(3rem, 7vw, 5rem);
+  width: clamp(10rem, 15vw, 14rem);
+  height: clamp(7rem, 7vw, 9rem);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
