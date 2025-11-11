@@ -88,7 +88,7 @@ h1 {
 h2 {
   position: relative;
   font-family: 'Alex Brush', cursive;
-  font-size: 3rem;
+  font-size: 2rem;
   color: rgb(34, 34, 34, 0.8);
   text-align: center;
   margin-bottom: 2.5rem;
@@ -233,7 +233,7 @@ footer {
 }
 
 #countdown {
-  font-size: 1.8rem;
+  font-size: 1rem;
   font-weight: bold;
   letter-spacing: 2px;
   background: rgba(255, 255, 255, 0.3);
@@ -246,6 +246,19 @@ footer {
 
 #countdown span {
   color: rgb(136, 87, 80);
-  font-size: 2rem;
-  font-family: 'Playwrite España', cursive;
+  font-size: 1.1rem;
+  font-family: cursive;
+}
+
+.map-container {
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+  margin: 40px auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(6px);
+  padding-bottom: 10px;
 }
