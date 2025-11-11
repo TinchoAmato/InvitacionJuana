@@ -43,7 +43,7 @@ body {
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 
   /* Dimensiones dinámicas */
-  min-height: min(70vh, 600px);
+  min-height: min(70vh, 350px);
   width: min(80vw, 480px);
   display: flex;
   flex-direction: column;
@@ -254,7 +254,7 @@ footer {
   text-align: center;
   width: 100%;
   max-width: 500px;
-  margin: 40px auto;
+  margin: 20px auto;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
